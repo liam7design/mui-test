@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+# 프로젝트 폴더 명
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 명
 
-## Available Scripts
+개요 : 프로젝트에 대한 설명 \
+기간 : 2024.00.00 ~
 
-In the project directory, you can run:
 
-### `npm start`
+### node.js 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- node version : v.16.x
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 서버구동
 
-### `npm test`
+- `yarn start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 빌드
 
-### `npm run build`
+- `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### FILE STRUCTURE
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  src                   # 작업폴더
+  │
+  └───assets            # assets 폴더 (이미지, css 파일, 폰트 파일)
+  └───components        # 컴포넌트 폴더 (하위 폴더에서 세분화)
+    └───_tests_         # 테스트 용
+    └───form            # 컴포넌트 폴더 예시
+    └───iu              # 컴포넌트 폴더 예시
+  └───context           # context 폴더 (React context 파일)
+  └───data              # 데이터 폴더 (JSON 파일, 전역으로 사용하는 상수 변수가 포함된 파일)
+  └───features          # 기능별 폴더 
+    └───todos           # 기능별 폴더 예시
+      └───components    # 기능별 폴더 예시
+      └───hooks         # 기능별 폴더 예시
+      └───services      # 기능별 폴더 예시
+      index.js         
+  └───hooks             # hooks 폴더 (전역 hook만 저장)
+  └───layouts           # 레이아웃 폴더 (다양한 레이아웃을 사용하는 경우)
+  └───lib               # 라이브러리 폴더 (라이브러리의 파사드)
+  └───pages             # 페이지 폴더
+    └───_tests_         # 테스트 용
+    Home.js             
+  └───services          # 서비스 폴더 (외부 API와 상호작용하는 모든 코드)
+  └───utils             # 유틸리티 폴더 (포맷팅 함수 등 모든 유틸리티 기능)
+  App.js                 
+  index.js              
+```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Library
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+사용 라이브러리 URL - v버전표기
+사용 라이브러리 URL - v버전표기
+사용 라이브러리 URL - v버전표기
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Visual Studio Code - Settings.json
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+{
+	"git.confirmSync": false,
+	"gitlens.advanced.messages": {
+		"suppressGitMissingWarning": true
+	},
+	"emmet.preferences": {
+		"css.valueSeparator": ":",
+		"css.propertyEnd": ""
+	},
+	"liveServer.settings.donotShowInfoMsg": true,
+	"liveServer.settings.donotVerifyTags": true,
+	"auto-rename-tag.activationOnLanguage": ["*"],
+	"workbench.startupEditor": "none",
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	}
+}
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Visual Studio Code - Settings.json - 사용자설정
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+{
+	"git.confirmSync": false,
+	"gitlens.advanced.messages": {
+		"suppressGitMissingWarning": true
+	},
+	"emmet.preferences": {
+		"css.valueSeparator": ":",
+		"css.propertyEnd": ""
+	},
+	"liveServer.settings.donotShowInfoMsg": true,
+	"liveServer.settings.donotVerifyTags": true,
+	"auto-rename-tag.activationOnLanguage": ["*"],
+	"security.workspace.trust.untrustedFiles": "open",
+	"prettier.printWidth": 200,
+	"prettier.tabWidth": 2,
+	"prettier.useTabs": true,
+	"prettier.semi": true,
+	"prettier.singleQuote": false,
+	"prettier.trailingComma": "all",
+	"prettier.endOfLine": "auto",
+	"prettier.bracketSpacing": false,
+	"prettier.htmlWhitespaceSensitivity": "css",
+	"workbench.startupEditor": "none",
+	"liveServer.settings.port": 5501,
+	"editor.tabSize": 2,
+	//* HTML CSS Support 추가 설정
+	"css.enabledLanguages": ["html", "javascriptreact", "typescriptreact", "typescript", "javascript", "scss"],
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"svg.preview.mode": "svg",
+	"editor.wordWrap": "on"
+}
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Prettier 설정
 
-### Analyzing the Bundle Size
+```
+VS Code > setting
+Format on Save 확인
+Default Formatter : prettier format
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Figma
 
-### Making a Progressive Web App
+```
+피그마 주소
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## SVG
 
-### Advanced Configuration
+```
+VScode extension SVG
+https://marketplace.visualstudio.com/items?itemName=jock.svg
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"> width, height 삭제
+2. 경량화 - Minify SVG
+3. Data URI로 변환
+https://yoksel.github.io/url-encoder/
+4. Take encoded copy
+5. 함수화 하기
