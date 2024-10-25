@@ -1,6 +1,6 @@
 import React from 'react';
 import FullpageLayout from '../layouts/FullpageLayout';
-import NewsDetailComponent from '../components/NewsDetailComponent';
+import NewsDetailComponent from '../components/news/NewsDetailComponent';
 
 const NewsDetail = () => {
   return (

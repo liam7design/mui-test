@@ -1,10 +1,11 @@
 import React from 'react';
 import FullpageLayout from '../layouts/FullpageLayout';
+import YoutubeDetailComponent from '../components/youtube/YoutubeDetailComponent';
 
 const YoutubeDetail = () => {
   return (
     <FullpageLayout>
-      <p>유튜브 (상세) 화면 입니다.</p>
+      <YoutubeDetailComponent />
     </FullpageLayout>
   )
 }

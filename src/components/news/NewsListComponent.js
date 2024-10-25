@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Typography, ButtonGroup, Button, MenuItem, Select, FormControl, OutlinedInput, InputAdornment, List, ListItem } from '@mui/material';
-import NewsData from '../data/NewsData.json';
+import NewsData from '../../data/NewsData.json';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 const NewsListComponent = () => {
@@ -114,12 +114,12 @@ const NewsListComponent = () => {
                 whiteSpace: 'nowrap',
                 textOverflow: 'ellipsis',
               }}>{item.title}</Typography>
-              <Box sx={{
+              <Typography sx={{
                 ml: 'auto',
-                mt: { xs: 1, sm: 0 },
+                mt: { xs: 0.5, sm: 0 },
                 color: 'grey.600',
                 fontSize: '0.875rem',
-              }}>{item.date}</Box>
+              }}>{item.date}</Typography>
             </ListItem>
           ))}
         </List>

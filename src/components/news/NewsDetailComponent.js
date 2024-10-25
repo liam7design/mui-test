@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Typography, Button } from '@mui/material';
-import NewsData from '../data/NewsData.json';
+import NewsData from '../../data/NewsData.json';
 
 const NewsDetailComponent = () => {
   const { id } = useParams();

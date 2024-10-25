@@ -1,10 +1,11 @@
 import React from 'react';
 import FullpageLayout from '../layouts/FullpageLayout';
+import NoticeDetailComponent from '../components/notice/NoticeDetailComponent';
 
 const NoticeDetail = () => {
   return (
     <FullpageLayout>
-      <p>공지사항 (상세) 화면 입니다.</p>
+      <NoticeDetailComponent />
     </FullpageLayout>
   )
 }

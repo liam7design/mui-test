@@ -1,10 +1,11 @@
 import React from 'react';
 import SubpageLayout from '../layouts/SubpageLayout';
+import ScheduleListComponent from '../components/schedule/ScheduleListComponent';
 
 const ScheduleList = () => {
   return (
     <SubpageLayout>
-      <p>일정 (목록) 화면 입니다.</p>
+      <ScheduleListComponent />
     </SubpageLayout>
   )
 }

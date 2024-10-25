@@ -1,6 +1,6 @@
 import React from 'react';
 import SubpageLayout from '../layouts/SubpageLayout';
-import NewsListComponent from '../components/NewsListComponent';
+import NewsListComponent from '../components/news/NewsListComponent';
 
 const NewsList = () => {
   return (

@@ -1,10 +1,11 @@
 import React from 'react';
 import SubpageLayout from '../layouts/SubpageLayout';
+import YoutubeListComponent from '../components/youtube/YoutubeListComponent';
 
 const YoutubeList = () => {
   return (
     <SubpageLayout>
-      <p>유튜브 (목록) 화면 입니다.</p>
+      <YoutubeListComponent />
     </SubpageLayout>
   )
 }

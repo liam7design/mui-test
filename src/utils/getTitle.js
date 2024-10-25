@@ -17,11 +17,11 @@ const getTitle = (pathname) => {
       return '주요 변동정보';
     case pathname === '/NoticeList':
       return '공지사항';
-    case pathname === '/NoticeDetail':
+    case pathname.startsWith('/NoticeDetail'):
       return '공지사항 상세';
     case pathname === '/YoutubeList':
       return '유튜브';
-    case pathname === '/YoutubeDetail':
+    case pathname.startsWith('/YoutubeDetail'):
       return '유튜브 상세';
     case pathname === '/NewsList':
       return '뉴스';
@@ -31,7 +31,7 @@ const getTitle = (pathname) => {
       return '매물등록 요청';
     case pathname === '/SaleList':
       return '매물요청 현황';
-    case pathname === '/SaleDetail':
+    case pathname.startsWith('/SaleDetail'):
       return '매물요청 현황 상세';
     case pathname === '/ScheduleList':
       return '일정 ';
