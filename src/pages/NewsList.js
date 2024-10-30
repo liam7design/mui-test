@@ -1,11 +1,17 @@
 import React from 'react';
 import SubpageLayout from '../layouts/SubpageLayout';
-import NewsListComponent from '../components/news/NewsListComponent';
+import BoardList from '../components/board/BoardList';
+import NewsData from '../data/NewsData.json';
 
 const NewsList = () => {
   return (
     <SubpageLayout>
-      <NewsListComponent />
+      <BoardList
+        data={NewsData} 
+        detailLink="/NewsDetail" 
+        type="default"
+        showSource
+      />
     </SubpageLayout>
   )
 }

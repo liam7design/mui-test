@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import Footer from './Footer';
 import { useLocation } from 'react-router-dom';
 import { Container } from '@mui/material';
 import getTitle from '../utils/getTitle';
@@ -13,11 +14,12 @@ const DefaultLayout = ({ children }) => {
       <Header onMenuClick={() => {}} title={getTitle(location.pathname)} enableDrawer />
       <main>
         <Container sx={{ 
-          pt: { xs: 4, sm: 6 }, 
-          pb: { xs: 4, sm: 6 },
+          pt: { xs: 3, sm: 6 }, 
+          pb: { xs: 3, sm: 6 },
           textAlign: 'left',
         }}>{children}</Container>
       </main>
+      <Footer />
     </>
   );
 };

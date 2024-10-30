@@ -1,12 +1,16 @@
 import React from 'react';
-import SubpageLayout from '../layouts/SubpageLayout';
-import SaleDetailComponent from '../components/sale/SaleDetailComponent';
+import FullpageLayout from '../layouts/FullpageLayout';
+import BoardDetail from '../components/board/BoardDetail';
+import SaleData from '../data/SaleData.json';
 
 const SaleDetail = () => {
   return (
-    <SubpageLayout>
-      <SaleDetailComponent />
-    </SubpageLayout>
+    <FullpageLayout>
+      <BoardDetail
+        data={SaleData}
+        type="sale"
+      />
+    </FullpageLayout>
   )
 }
 

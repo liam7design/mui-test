@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import ScrollToTop from '../components/ui/ScrollToTop';
 
 import Main from '../pages/Main';	
 import AddressList from '../pages/AddressList';
@@ -22,26 +23,29 @@ import CertificateCheck from '../pages/CertificateCheck';
 
 const Router = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/AddressList" element={<AddressList />} />
-      <Route path="/AddressReg" element={<AddressReg />} />
-      <Route path="/SafetyCheckList" element={<SafetyCheckList />} />
-      <Route path="/MarketPrice" element={<MarketPrice />} />
-      <Route path="/MapSearch" element={<MapSearch />} />
-      <Route path="/ChangeInfoList" element={<ChangeInfoList />} />
-      <Route path="/NoticeList" element={<NoticeList />} />
-      <Route path="/NoticeDetail/:id" element={<NoticeDetail />} />
-      <Route path="/YoutubeList" element={<YoutubeList />} />
-      <Route path="/YoutubeDetail/:id" element={<YoutubeDetail />} />
-      <Route path="/NewsList" element={<NewsList />} />
-      <Route path="/NewsDetail/:id" element={<NewsDetail />} />
-      <Route path="/SaleRequest" element={<SaleRequest />} />
-      <Route path="/SaleList" element={<SaleList />} />
-      <Route path="/SaleDetail/:id" element={<SaleDetail />} />
-      <Route path="/ScheduleList" element={<ScheduleList />} />
-      <Route path="/CertificateCheck" element={<CertificateCheck />} />
-    </Routes> 
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/AddressList" element={<AddressList />} />
+        <Route path="/AddressReg" element={<AddressReg />} />
+        <Route path="/SafetyCheckList" element={<SafetyCheckList />} />
+        <Route path="/MarketPrice" element={<MarketPrice />} />
+        <Route path="/MapSearch" element={<MapSearch />} />
+        <Route path="/ChangeInfoList" element={<ChangeInfoList />} />
+        <Route path="/NoticeList" element={<NoticeList />} />
+        <Route path="/NoticeDetail/:id" element={<NoticeDetail />} />
+        <Route path="/YoutubeList" element={<YoutubeList />} />
+        <Route path="/YoutubeDetail/:id" element={<YoutubeDetail />} />
+        <Route path="/NewsList" element={<NewsList />} />
+        <Route path="/NewsDetail/:id" element={<NewsDetail />} />
+        <Route path="/SaleRequest" element={<SaleRequest />} />
+        <Route path="/SaleList" element={<SaleList />} />
+        <Route path="/SaleDetail/:id" element={<SaleDetail />} />
+        <Route path="/ScheduleList" element={<ScheduleList />} />
+        <Route path="/CertificateCheck" element={<CertificateCheck />} />
+      </Routes> 
+    </>
   );
 };
 

@@ -1,11 +1,15 @@
 import React from 'react';
 import FullpageLayout from '../layouts/FullpageLayout';
-import YoutubeDetailComponent from '../components/youtube/YoutubeDetailComponent';
+import BoardDetail from '../components/board/BoardDetail';
+import YoutubeData from '../data/YoutubeData.json';
 
 const YoutubeDetail = () => {
   return (
     <FullpageLayout>
-      <YoutubeDetailComponent />
+      <BoardDetail
+        data={YoutubeData}
+        showYoutube
+      />
     </FullpageLayout>
   )
 }

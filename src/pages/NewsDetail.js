@@ -1,11 +1,15 @@
 import React from 'react';
 import FullpageLayout from '../layouts/FullpageLayout';
-import NewsDetailComponent from '../components/news/NewsDetailComponent';
+import BoardDetail from '../components/board/BoardDetail';
+import NewsData from '../data/NewsData.json';
 
 const NewsDetail = () => {
   return (
     <FullpageLayout>
-      <NewsDetailComponent />
+      <BoardDetail
+        data={NewsData}
+        showSource
+      />
     </FullpageLayout>
   )
 }

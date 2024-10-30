@@ -1,11 +1,16 @@
 import React from 'react';
 import SubpageLayout from '../layouts/SubpageLayout';
-import YoutubeListComponent from '../components/youtube/YoutubeListComponent';
+import BoardList from '../components/board/BoardList';
+import YoutubeData from '../data/YoutubeData.json';
 
 const YoutubeList = () => {
   return (
     <SubpageLayout>
-      <YoutubeListComponent />
+      <BoardList
+        data={YoutubeData} 
+        detailLink="/YoutubeDetail" 
+        type="youtube"
+      />
     </SubpageLayout>
   )
 }

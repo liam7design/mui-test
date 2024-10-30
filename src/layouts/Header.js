@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Typography, Drawer, MenuList, MenuItem, ListItemText, Grid } from '@mui/material';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { AppBar, Toolbar, IconButton, Typography, Drawer, MenuList, MenuItem, ListItemText, styled } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import CloseIcon from '@mui/icons-material/Close';
+
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  borderBottom: '0.063rem solid',
+  borderColor: (theme.vars || theme).palette.divider,
+  backgroundColor: (theme.vars || theme).palette.background.default,
+  boxShadow: 0,
+}));
+
+const HeaderTitle = styled(Typography)({
+  flexGrow: 1, 
+  fontSize: '1.125rem', 
+  fontWeight: '500',
+});
 
 const Header = ({ title, showBackButton = false, showCloseButton = false, enableDrawer = false }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -62,68 +77,37 @@ const Header = ({ title, showBackButton = false, showCloseButton = false, enable
   return (
     <>
       {/* AppBar 설정 */}
-      <AppBar>
-        <Toolbar>
+      <AppBar position="fixed" sx={{ boxShadow: 0, color: 'text.primary' }}
+      >
+        <StyledToolbar>
 
           {/* DefaultLayout Header */}
           {!showBackButton && !showCloseButton && enableDrawer && (
-            <Grid container sx={{ alignItems: 'center' }}>
-              <Grid item xs={3} sx={{ textAlign: 'left' }}>
-                <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
-                  <MenuRoundedIcon />
-                </IconButton>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="h2" sx={{ flexGrow: 1, fontSize: '1.25rem' }}>
-                  {title}
-                </Typography>
-              </Grid>
-              <Grid item xs={3} sx={{ textAlign: 'right' }}>
-                <IconButton color="inherit" aria-label="login">
-                  <PersonRoundedIcon />
-                </IconButton>
-                <IconButton edge="end" color="inherit" aria-label="send">
-                  <SendRoundedIcon />
-                </IconButton>
-              </Grid>
-            </Grid>
+            <>
+              <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}><MenuIcon /></IconButton>
+              <HeaderTitle variant="h2" sx={{ paddingLeft: '2.5rem'}}>{title}</HeaderTitle>
+              <IconButton color="inherit" aria-label="login"><PersonOutlineIcon /></IconButton>
+              <IconButton edge="end" color="inherit" aria-label="send"><SendOutlinedIcon /></IconButton>
+            </>
           )}
 
           {/* SubpageLayout Header */}
           {showBackButton && (
-            <Grid container sx={{ alignItems: 'center' }}>
-              <Grid item xs sx={{ textAlign: 'left' }}>
-                <IconButton edge="start" color="inherit" aria-label="back" onClick={handleBack}>
-                  <ArrowBackRoundedIcon />
-                </IconButton>
-              </Grid>
-              <Grid item xs={9}>
-                <Typography variant="h2" sx={{ flexGrow: 1, fontSize: '1.25rem' }}>
-                  {title}
-                </Typography>
-              </Grid>
-              <Grid item xs sx={{ textAlign: 'right' }}></Grid>
-            </Grid>
+            <>
+              <IconButton edge="start" color="inherit" aria-label="back" onClick={handleBack}><ArrowBackIcon /></IconButton>
+              <HeaderTitle variant="h2" sx={{ paddingLeft: '0.25rem', textAlign: 'left' }} >{title}</HeaderTitle>
+            </>
           )}
 
           {/* FullpageLayout Header */}
           {showCloseButton && (
-            <Grid container sx={{ alignItems: 'center' }}>
-              <Grid item xs sx={{ textAlign: 'left' }}></Grid>
-              <Grid item xs={9}>
-                <Typography variant="h2" sx={{ flexGrow: 1, fontSize: '1.25rem' }}>
-                  {title}
-                </Typography>
-              </Grid>
-              <Grid item xs sx={{ textAlign: 'right' }}>
-                <IconButton edge="end" color="inherit" aria-label="close" onClick={handleBack}>
-                  <CloseRoundedIcon />
-                </IconButton>
-              </Grid>
-            </Grid> 
+            <>
+              <HeaderTitle variant="h2" sx={{ textAlign: 'left' }} >{title}</HeaderTitle>
+              <IconButton edge="end" color="inherit" aria-label="close" onClick={handleBack}><CloseIcon /></IconButton>
+            </> 
           )}
 
-        </Toolbar>
+        </StyledToolbar>
       </AppBar>
 
       {/* Drawer 설정 */}

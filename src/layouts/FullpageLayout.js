@@ -14,7 +14,7 @@ const FullpageLayout = ({ children }) => {
       <main>
         <Container sx={{ 
           pt: { xs: 4, sm: 6 }, 
-          pb: { xs: 4, sm: 6 },
+          pb: { xs: 6, sm: 8 },
           textAlign: 'left',
         }}>{children}</Container>
       </main>
