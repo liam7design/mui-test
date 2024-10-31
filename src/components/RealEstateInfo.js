@@ -15,14 +15,14 @@ const UnitInfo = styled(Typography)({
 
 const UnitDate = styled(Typography)({
   color: '#757575',
-  fontSize: '0.875rem',
+  fontSize: '0.75rem',
   whiteSpace: 'nowrap',
 });
 
 // 단일 가격 정보 카드 컴포넌트 정의
 const PriceCard = ({ label, size, highest, lowest, highestDate, lowestDate }) => {
   // label 값에 따라 Chip 색상 결정
-  const getBackgroundColor = (label) => {
+  const getChipColor = (label) => {
     switch (label) {
       case '매매':
         return blue[500];
@@ -36,11 +36,11 @@ const PriceCard = ({ label, size, highest, lowest, highestDate, lowestDate }) =>
   };
   return (
     <Card variant='outlined' sx={{ mt: 1 }}>
-      <Box sx={{ pl: 1, pr: 3, pt: 1, pb: 1 }}>
-        <Stack direction="row" sx={{ alignContent: 'center', alignItems: 'center' }}>
-          <Stack sx={{ minWidth: '8rem', alignItems: 'center' }}>
-            <Chip label={label} sx={{ width: '4rem', fontSize: '0.875rem', color: 'white', backgroundColor: getBackgroundColor(label), fontWeight: '600' }} />
-            <Typography variant="h6" component="p" mt={0.5}>{size}</Typography>
+      <Box sx={{ pl: 1, pr: 1.5, pt: 1, pb: 1 }}>
+        <Stack direction="row" sx={{ alignItems: 'center' }}>
+          <Stack sx={{ minWidth: '6rem', alignItems: 'center' }}>
+            <Chip size="small" label={label} sx={{ width: '3.125rem', marginTop: '0.5rem', color: 'white', backgroundColor: getChipColor(label), fontWeight: '600', borderRadius: '0.25rem' }} />
+            <Typography variant="h6" component="p" sx={{ fontSize: '1.125rem' }} mt={0.5}>{size}</Typography>
           </Stack>
           <Stack sx={{ flexGrow: 1, ml: 2 }}>
             <PriceDetail label="최고" price={highest} date={highestDate} />
@@ -55,7 +55,7 @@ const PriceCard = ({ label, size, highest, lowest, highestDate, lowestDate }) =>
 
 // 최고 및 최저 가격 정보 컴포넌트 정의
 const PriceDetail = ({ label, price, date }) => (
-  <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ alignItems: { xs: 'flex-start', sm: 'center' }, justifyContent: 'space-between', pt: 1, pb: 1 }}>
+  <Stack direction='row' sx={{ alignItems: 'center', justifyContent: 'space-between', pt: 0.5, pb: 0.5 }}>
     <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'center', gap: 1 }}>
       <Typography variant="body2" component="span">{label}</Typography>
       <Typography variant="body1" component="span" sx={{ fontWeight: '600' }}>{price}</Typography>
@@ -85,12 +85,13 @@ const RealEstateInfo = () => {
       <Swiper 
         spaceBetween={24} 
         slidesPerView={1}
+        autoHeight='true'
         style={{ paddingLeft: paddingValue, paddingRight: paddingValue }}
       >
         {realEstateData.map((property, index) => (
           <SwiperSlide key={index}>
-            <Stack direction="row" sx={{ alignContent: { xs: 'center', sm: 'flex-start' }, alignItems: 'center', gap: 1, mb: 2 }}>
-              <Chip size="small" color="primary" label={property.propertyType} sx={{ pl: 1, pr: 1 }} />
+            <Stack direction="row" sx={{ alignItems: 'flex-start',  gap: 1, mb: 2 }}>
+              <Chip size="small" color="primary" label={property.propertyType} sx={{ borderRadius: '0.25rem' }} />
               <Typography variant="body1" component="p">
                 {property.address}
               </Typography>

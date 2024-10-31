@@ -45,11 +45,7 @@ const BoardDetail = ({ data, type, showYoutube = false, showSource = false }) =>
             fontWeight: 'regular',
             lineHeight: 1.5,
           }}>
-
-            
             <Box>{boardItem.content}</Box>
-
-
           </Box>
           <Button onClick={() => navigate(-1)} variant="outlined" fullWidth>닫기</Button>
         </>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Box, Typography, List, ListItem, Card, CardMedia, CardContent, CardActionArea, Chip, styled } from '@mui/material';
+import { orange, green, blue, grey, red } from '@mui/material/colors';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
@@ -50,6 +51,24 @@ const RecentPosts = ({ title, link, detailLink, data, type, showSource = false }
 
   }, [data]);
   
+  // 상태별 배경 색상을 결정하는 함수
+  const getChipColor = (state) => {
+    switch (state) {
+      case '요청':
+        return orange[500];
+      case '등록':
+        return green[500];
+      case '진행':
+        return blue[500];
+      case '완료':
+        return grey[500];
+      case '취소':
+        return red[500];
+      default:
+        return 'primary';
+    }
+  };
+
   // type에 따라 switch 문으로 레이아웃 구분
   switch (type) {
     case "youtube":
@@ -93,7 +112,7 @@ const RecentPosts = ({ title, link, detailLink, data, type, showSource = false }
                   <Typography sx={{ fontSize: '1rem', fontWeight: 'medium',}}>{item.date}&nbsp;&nbsp;{item.time}</Typography>
                   <Typography sx={{ mt: 0.5, fontSize: '1rem', color: 'grey.800' }}>{item.address}</Typography>
                 </Box>
-                <Chip variant="outlined" color="primary" label={item.content} sx={{ ml: 'auto', fontSize: '0.875rem' }} />
+                <Chip variant="outlined" color="primary" label={item.content} sx={{ ml: 'auto', fontSize: '0.875rem', fontWeight: '500', borderRadius: '0.25rem' }} />
               </ListItem>
             ))}
           </List>
@@ -112,7 +131,7 @@ const RecentPosts = ({ title, link, detailLink, data, type, showSource = false }
                   </PostTitle>
                   <PostDate sx={{ display: 'flex', ml: 'auto', mt: { xs: 0.5, sm: 0 } }}>{item.date}</PostDate>
                 </Box>
-                <Box sx={{ ml: 'auto' }}> <Chip color="primary" label={item.state} sx={{ ml: { xs: 2, sm: 4 }, fontSize: '0.875rem' }} /> 
+                <Box sx={{ ml: 'auto' }}><Chip color="primary" size="small" label={item.state} sx={{ ml: { xs: 2, sm: 4 }, fontSize: '0.875rem', color: 'white', backgroundColor: getChipColor(item.state), borderRadius: '0.25rem' }} /> 
                 </Box>
               </ListItem>
             ))}

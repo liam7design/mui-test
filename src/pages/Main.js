@@ -11,7 +11,7 @@ import NewsData from '../data/NewsData.json';
 import SaleData from '../data/SaleData.json';
 import ScheduleData from '../data/ScheduleData.json';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
-import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
+import GradingOutlinedIcon from '@mui/icons-material/GradingOutlined';
 import LibraryAddCheckOutlinedIcon from '@mui/icons-material/LibraryAddCheckOutlined';
 import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
 
@@ -32,16 +32,14 @@ const MainButton = styled(Button)({
   flexDirection: 'column', 
   alignItems: 'center', 
   justifyContent: 'center', 
-  padding: '0.75rem 0',
-  fontSize: '0.938rem',
-  fontWeight: '600',
+  padding: '0.5rem 0',
+  fontWeight: '500',
   '& > svg': {
     margin: 0, 
     marginBottom: '0.25rem', 
-    fontSize: '2rem'
+    fontSize: '1.875rem'
   }
 });
-
 
 const Main = () => {
 
@@ -112,25 +110,13 @@ const Main = () => {
 
       <Box mb={2.5}>
         <Box sx={{ display: 'flex', gap: 1 }}>
+          <MainButton variant="outlined"><GradingOutlinedIcon />전세계약작성</MainButton>
+          <MainButton variant="outlined" component={Link} to='/MarketPrice'><MapOutlinedIcon />주변시세</MainButton>
           {activeButton === 'userType1' && (
-            <>
-              <MainButton variant="outlined"><EditNoteOutlinedIcon />전세계약작성</MainButton>
-              <MainButton variant="outlined" component={Link} to='/MarketPrice'><MapOutlinedIcon />주변시세</MainButton>
-              <MainButton variant="outlined" component={Link} to='/SafetyCheckList'><LibraryAddCheckOutlinedIcon />전세안전체크</MainButton>
-            </>
+            <MainButton variant="outlined" component={Link} to='/SafetyCheckList'><LibraryAddCheckOutlinedIcon />전세안전체크</MainButton>
           )}
           {activeButton === 'userType2' && (
-            <>
-              <MainButton variant="outlined"><EditNoteOutlinedIcon />전세계약작성</MainButton>
-              <MainButton variant="outlined" component={Link} to='/MarketPrice'><MapOutlinedIcon />주변시세</MainButton>
-              <MainButton variant="outlined" component={Link} to='/SaleRequest'><MapsHomeWorkOutlinedIcon />매물등록요청</MainButton>
-            </>
-          )}
-          {activeButton === 'userType3' && (
-            <>
-              <MainButton variant="outlined"><EditNoteOutlinedIcon />전세계약작성</MainButton>
-              <MainButton variant="outlined" component={Link} to='/MarketPrice'><MapOutlinedIcon />주변시세</MainButton>
-            </>
+            <MainButton variant="outlined" component={Link} to='/SaleRequest'><MapsHomeWorkOutlinedIcon />매물등록요청</MainButton>
           )}
         </Box>
       </Box>

@@ -47,7 +47,7 @@ const Banner = () => {
         {BannerData.map((banner, index) => (
           <SwiperSlide key={index}>
             <BannerCard variant="outlined" component={Link} href={banner.linkUrl} target="_blank">
-              <CardMedia image={banner.imageUrl} title={banner.title} sx={{ paddingTop: '32%' }} />
+              <CardMedia image={banner.imageUrl} alt={banner.title} sx={{ paddingTop: '32%' }} />
             </BannerCard>
           </SwiperSlide>
         ))}
