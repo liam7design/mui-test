@@ -2,8 +2,9 @@ import React from 'react';
 import { Typography, styled } from '@mui/material';
 
 const Copyright = styled(Typography)(({ theme }) => ({
-  
+  padding: '0.5rem',
   color: '#d0d0d0',
+  fontSize: '0.75rem',
   borderTop: '0.063rem solid',
   borderColor: (theme.vars || theme).palette.divider,
   backgroundColor: (theme.vars || theme).palette.text.primary,
@@ -13,7 +14,7 @@ const Copyright = styled(Typography)(({ theme }) => ({
 const Footer = () => {
   return (
     <>
-      <Copyright variant="body2" p={1}>@ 2024 SWISIGN Corp. All rights reserved.</Copyright>
+      <Copyright>@ 2024 SWISIGN Corp. All rights reserved.</Copyright>
     </>
   )
 };

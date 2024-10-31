@@ -1,28 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Box, ButtonGroup, Button, Typography, styled } from '@mui/material';
 import DefaultLayout from '../layouts/DefaultLayout';
 import RecentPosts from '../components/board/RecentPosts';
 import Banner from '../components/Banner';
+import RealEstateInfo from '../components/RealEstateInfo';
 import NoticeData from '../data/NoticeData.json';
 import YoutubeData from '../data/YoutubeData.json';
 import NewsData from '../data/NewsData.json';
 import SaleData from '../data/SaleData.json';
 import ScheduleData from '../data/ScheduleData.json';
-import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
-import ContentPasteGoRoundedIcon from '@mui/icons-material/ContentPasteGoRounded';
-import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
-import MapRoundedIcon from '@mui/icons-material/MapRounded';
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
+import LibraryAddCheckOutlinedIcon from '@mui/icons-material/LibraryAddCheckOutlined';
+import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
 
 // Button 스타일 정의, active 클래스에 따른 스타일 지정
-const StyledButton = styled(Button)(({ theme }) => ({
-  borderColor: '#d0d0d0',
+const UserChoiceButton = styled(Button)(({ theme }) => ({
   color: (theme.vars || theme).palette.text.secondary,
+  borderColor: '#d0d0d0',
   backgroundColor: '#f8f8f8',
   '&.active': {
     color: 'white',
+    borderColor: (theme.vars || theme).palette.text.primary,
     backgroundColor: (theme.vars || theme).palette.text.primary,
   }
 }));
+
+const MainButton = styled(Button)({
+  width: '100%',
+  flexDirection: 'column', 
+  alignItems: 'center', 
+  justifyContent: 'center', 
+  padding: '0.75rem 0',
+  fontSize: '0.938rem',
+  fontWeight: '600',
+  '& > svg': {
+    margin: 0, 
+    marginBottom: '0.25rem', 
+    fontSize: '2rem'
+  }
+});
+
 
 const Main = () => {
 
@@ -47,34 +66,33 @@ const Main = () => {
 
       <Box mb={5}>
         <ButtonGroup variant="outlined" fullWidth>
-          <StyledButton
+          <UserChoiceButton
             onClick={() => handleButtonClick('userType1')}
             className={activeButton === 'userType1' ? 'active' : ''}
-          >임대인</StyledButton>
-          <StyledButton
+          >임차인</UserChoiceButton>
+          <UserChoiceButton
             onClick={() => handleButtonClick('userType2')}
             className={activeButton === 'userType2' ? 'active' : ''}
-          >임차인</StyledButton>
-          <StyledButton
+          >임대인</UserChoiceButton>
+          <UserChoiceButton
             onClick={() => handleButtonClick('userType3')}
             className={activeButton === 'userType3' ? 'active' : ''}
-          >부동산중개인</StyledButton>
+          >부동산중개인</UserChoiceButton>
         </ButtonGroup>
       </Box>
 
       {activeButton === 'userType1' && (
         <>
           <Box mb={5}>
-            <Typography variant="h6">임대인 전용 콘텐츠</Typography>
-            <Typography variant="body1">임대인을 위한 정보가 여기에 표시됩니다.</Typography>
+            <Typography variant="h6">임차인 전용 콘텐츠</Typography>
+            <Typography variant="body1">임차인을 위한 정보가 여기에 표시됩니다.</Typography>
           </Box>
         </>
       )}
       {activeButton === 'userType2' && (
         <>
           <Box mb={5}>
-            <Typography variant="h6">임차인 전용 콘텐츠</Typography>
-            <Typography variant="body1">임대인을 위한 정보가 여기에 표시됩니다.</Typography>
+            <RealEstateInfo />
           </Box>
         </>
       )}
@@ -92,18 +110,28 @@ const Main = () => {
         </>
       )}
 
-      <Box mb={5}>
+      <Box mb={2.5}>
         <Box sx={{ display: 'flex', gap: 1 }}>
           {activeButton === 'userType1' && (
-            <Button variant="contained" startIcon={<InventoryRoundedIcon />} size="large" sx={{ width: 'calc(50% - 0.25rem)' }}>전세안전체크</Button>
+            <>
+              <MainButton variant="outlined"><EditNoteOutlinedIcon />전세계약작성</MainButton>
+              <MainButton variant="outlined" component={Link} to='/MarketPrice'><MapOutlinedIcon />주변시세</MainButton>
+              <MainButton variant="outlined" component={Link} to='/SafetyCheckList'><LibraryAddCheckOutlinedIcon />전세안전체크</MainButton>
+            </>
           )}
           {activeButton === 'userType2' && (
-            <Button variant="contained" startIcon={<ContentPasteGoRoundedIcon />} size="large" sx={{ width: 'calc(50% - 0.25rem)' }}>매물 등록요청</Button>
+            <>
+              <MainButton variant="outlined"><EditNoteOutlinedIcon />전세계약작성</MainButton>
+              <MainButton variant="outlined" component={Link} to='/MarketPrice'><MapOutlinedIcon />주변시세</MainButton>
+              <MainButton variant="outlined" component={Link} to='/SaleRequest'><MapsHomeWorkOutlinedIcon />매물등록요청</MainButton>
+            </>
           )}
           {activeButton === 'userType3' && (
-            <Button variant="contained" startIcon={<HistoryEduIcon />} size="large" sx={{ width: 'calc(50% - 0.25rem)' }}>전세계약 작성</Button>
+            <>
+              <MainButton variant="outlined"><EditNoteOutlinedIcon />전세계약작성</MainButton>
+              <MainButton variant="outlined" component={Link} to='/MarketPrice'><MapOutlinedIcon />주변시세</MainButton>
+            </>
           )}
-          <Button variant="outlined" startIcon={<MapRoundedIcon />} size="large" sx={{ width: 'calc(50% - 0.25rem)' }}>주변시세</Button>
         </Box>
       </Box>
 

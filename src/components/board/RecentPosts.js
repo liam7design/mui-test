@@ -58,7 +58,7 @@ const RecentPosts = ({ title, link, detailLink, data, type, showSource = false }
           <SectionHeader title={title} link={link} />
           <Box sx={{ ml: { xs: -2, sm: -3 }, mr: { xs: -2, sm: -3 } }}>
             <Swiper
-              spaceBetween={16}
+              spaceBetween={24}
               slidesPerView={1.6}
               freeMode={true} 
               style={{ paddingLeft: paddingValue, paddingRight: paddingValue }}

@@ -32,7 +32,7 @@ const Banner = () => {
   return (
     <Box sx={{ ml: { xs: -2, sm: -3 }, mr: { xs: -2, sm: -3 } }}>
       <Swiper 
-        spaceBetween={16} 
+        spaceBetween={24} 
         slidesPerView={1} 
         loop={true}
         autoplay={{
