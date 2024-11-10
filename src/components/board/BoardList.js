@@ -5,13 +5,17 @@ import { orange, green, blue, grey, red } from '@mui/material/colors';
 import BoardSearch from './BoardSearch';
 import PeriodSelect from './PeriodSelect';
 import BoardSort from './BoardSort';
+import BoardFilter from './BoardFilter'; // BoardFilter 추가
+import BoardCalendar from './BoardCalendar'; // BoardCalendar 추가
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 
 const BoardList = ({ data, detailLink, type, showSource = false }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('latest');
+  const [filterOption, setFilterOption] = useState('all'); // 필터 옵션 추가
   const [visibleCount, setVisibleCount] = useState(10);
+  const [selectedDate, setSelectedDate] = useState(null); // 선택한 날짜 상태 추가
   const [selectedDateRange, setSelectedDateRange] = useState(null);
 
   const getDateTime = (item) => {
@@ -37,28 +41,33 @@ const BoardList = ({ data, detailLink, type, showSource = false }) => {
             ? true
             : itemDate >= getDateRange(selectedDateRange)
           : true;
-        return matchesSearch && withinDateRange;
+
+        // 필터 옵션에 따라 item.state 필터링 적용
+        const matchesFilter = 
+          filterOption === 'all' || 
+          (filterOption === 'request' && item.state === '요청') ||
+          (filterOption === 'register' && item.state === '등록') ||
+          (filterOption === 'inProgress' && item.state === '진행') ||
+          (filterOption === 'complete' && item.state === '완료') ||
+          (filterOption === 'cancel' && item.state === '취소');
+
+        // 선택한 날짜에 따른 필터링
+        const matchesSelectedDate = selectedDate
+          ? itemDate.toDateString() === selectedDate.toDateString()
+          : true;
+
+        return matchesSearch && withinDateRange && matchesSelectedDate && matchesFilter;
       })
       .sort((a, b) => {
         const dateTimeA = getDateTime(a);
         const dateTimeB = getDateTime(b);
-
-        if (sortOption === 'latest') {
-          // return new Date(b.date) - new Date(a.date);
-          return dateTimeB - dateTimeA; 
-        } else if (sortOption === 'oldest') {
-          // return new Date(a.date) - new Date(b.date);
-          return dateTimeA - dateTimeB;
-        }
-        return 0;
+        return sortOption === 'latest' ? dateTimeB - dateTimeA : dateTimeA - dateTimeB;
       });
 
     setFilteredData(filtered.slice(0, visibleCount));
-  }, [searchTerm, sortOption, visibleCount, selectedDateRange, data]);
+  }, [searchTerm, sortOption, visibleCount, selectedDateRange, selectedDate, filterOption, data]);
 
-  const loadMore = () => {
-    setVisibleCount((prev) => prev + 10);
-  };
+  const loadMore = () => setVisibleCount((prev) => prev + 10);
 
   // 상태별 배경 색상을 결정하는 함수
   const getChipColor = (state) => {
@@ -128,9 +137,7 @@ const BoardList = ({ data, detailLink, type, showSource = false }) => {
       return (
         <>
           <Box sx={{ display: { xs: 'block', sm: 'flex' }, alignItems: 'center', justifyContent: 'space-between' }}>
-            <Box sx={{ ml: 'auto' }}>
-              <BoardSort sortOption={sortOption} setSortOption={setSortOption} />
-            </Box>
+            <BoardCalendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} /> {/* BoardCalendar 적용 */}
           </Box>
           <Box sx={{ mt: 4, mb: 4 }}>
             <List sx={{ p: 0, borderTop: 1, borderColor: 'grey.200' }}>
@@ -151,13 +158,9 @@ const BoardList = ({ data, detailLink, type, showSource = false }) => {
     case "sale":
       return (
         <>
-          <BoardSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <Box sx={{ display: { xs: 'block', sm: 'flex' }, alignItems: 'center', justifyContent: 'space-between' }}>
-            <Box sx={{ mt: 1, width: { xs: '100%', sm: '100%' } }}>
-              <PeriodSelect setSelectedDateRange={setSelectedDateRange} />
-            </Box>
-            <Box sx={{ mt: 1, ml: 'auto' }}>
-              <BoardSort sortOption={sortOption} setSortOption={setSortOption} />
+            <Box sx={{ ml: 'auto' }}>
+              <BoardFilter filterOption={filterOption} setFilterOption={setFilterOption} />
             </Box>
           </Box>
           <Box sx={{ mt: 4, mb: 4 }}>

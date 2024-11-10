@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import ScrollToTop from '../components/ui/ScrollToTop';
 
 import Main from '../pages/Main';	
+import MapList from '../pages/MapList';
+import MapView from '../pages/MapView';
 import AddressList from '../pages/AddressList';
 import AddressReg from '../pages/AddressReg';
 import SafetyCheckList from '../pages/SafetyCheckList';
@@ -27,6 +29,8 @@ const Router = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/MapList" element={<MapList />} />
+        <Route path="/MapView" element={<MapView />} />
         <Route path="/AddressList" element={<AddressList />} />
         <Route path="/AddressReg" element={<AddressReg />} />
         <Route path="/SafetyCheckList" element={<SafetyCheckList />} />

@@ -35,8 +35,7 @@ const MainButton = styled(Button)({
   padding: '0.5rem 0',
   fontWeight: '500',
   '& > svg': {
-    margin: 0, 
-    marginBottom: '0.25rem', 
+    margin: '.25rem 0', 
     fontSize: '1.875rem'
   }
 });
@@ -125,38 +124,6 @@ const Main = () => {
         <Banner />
       </Box>
 
-      {(activeButton === 'userType1' || activeButton === 'userType2') && (
-        <>
-          <Box mb={5}>
-            <RecentPosts
-              title="공지사항"
-              link="/NoticeList"
-              detailLink="/NoticeDetail"
-              data={NoticeData}
-              type="default"
-            />
-          </Box>
-          <Box mb={5}>
-            <RecentPosts
-              title="유튜브"
-              link="/YoutubeList"
-              detailLink="/YoutubeDetail"
-              data={YoutubeData}
-              type="youtube"
-            />
-          </Box>
-          <Box mb={5}>
-            <RecentPosts
-              title="뉴스"
-              link="/NewsList"
-              detailLink="/NewsDetail"
-              data={NewsData}
-              type="default"
-              showSource
-            />
-          </Box>
-        </>
-      )}
       {activeButton === 'userType3' && (
         <>
           <Box mb={5}>
@@ -170,6 +137,35 @@ const Main = () => {
           </Box>
         </>
       )}
+      
+      <Box mb={5}>
+        <RecentPosts
+          title="공지사항"
+          link="/NoticeList"
+          detailLink="/NoticeDetail"
+          data={NoticeData}
+          type="default"
+        />
+      </Box>
+      <Box mb={5}>
+        <RecentPosts
+          title="유튜브"
+          link="/YoutubeList"
+          detailLink="/YoutubeDetail"
+          data={YoutubeData}
+          type="youtube"
+        />
+      </Box>
+      <Box mb={5}>
+        <RecentPosts
+          title="뉴스"
+          link="/NewsList"
+          detailLink="/NewsDetail"
+          data={NewsData}
+          type="default"
+          showSource
+        />
+      </Box>
 
     </DefaultLayout>
   )

@@ -3,6 +3,10 @@ const getTitle = (pathname) => {
   switch (true) {
     case pathname === '/':
       return 'SWISIGN';
+    case pathname === '/MapList':
+      return '지도목록';
+    case pathname.startsWith('/MapView'):
+      return '지도상세';
     case pathname === '/AddressList':
       return '등록된 주소 보기';
     case pathname === '/AddressReg':
